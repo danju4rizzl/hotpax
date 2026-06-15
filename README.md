@@ -1,7 +1,7 @@
 # hotpax 🔒
 
 > A growing collection of reusable React UI components for access control, gating, and product UI.
-> By **Kavara Digital Global LTD** — [@deejaydev](https://github.com/YOUR_GITHUB_USERNAME)
+> By **Kavara Digital Global LTD** — [@deejaydev](https://github.com/danju4rizzl)
 
 ---
 
@@ -19,13 +19,13 @@
 
 ```bash
 # bun
-bun add github:YOUR_GITHUB_USERNAME/hotpax
+bun add github:danju4rizzl/hotpax
 
 # npm
-npm install github:YOUR_GITHUB_USERNAME/hotpax
+npm install github:danju4rizzl/hotpax
 
 # yarn
-yarn add github:YOUR_GITHUB_USERNAME/hotpax
+yarn add github:danju4rizzl/hotpax
 ```
 
 > **Important:** `lucide-react` and `react` are peer dependencies — your project must already have them installed.
@@ -137,7 +137,7 @@ git init
 git add .
 git commit -m "feat: initial hotpax package with LockGate component"
 git branch -M main
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/hotpax.git
+git remote add origin https://github.com/danju4rizzl/hotpax.git
 git push -u origin main
 ```
 
@@ -152,14 +152,14 @@ git push -u origin main
 cd path/to/other-project
 
 # Install hotpax directly from GitHub
-bun add github:YOUR_GITHUB_USERNAME/hotpax
+bun add github:danju4rizzl/hotpax
 ```
 
 This adds to your `package.json`:
 ```json
 {
   "dependencies": {
-    "hotpax": "github:YOUR_GITHUB_USERNAME/hotpax"
+    "hotpax": "github:danju4rizzl/hotpax"
   }
 }
 ```
@@ -191,7 +191,7 @@ git push
 # 4. In consuming projects, update to latest
 bun update hotpax
 # or pin to a specific commit/tag:
-# bun add github:YOUR_GITHUB_USERNAME/hotpax#v0.2.0
+# bun add github:danju4rizzl/hotpax#v0.2.0
 ```
 
 ### Using Git Tags for Versioned Releases
@@ -202,7 +202,7 @@ git tag v0.1.0
 git push origin v0.1.0
 
 # Install a specific version in another project
-bun add github:YOUR_GITHUB_USERNAME/hotpax#v0.1.0
+bun add github:danju4rizzl/hotpax#v0.1.0
 ```
 
 ---
