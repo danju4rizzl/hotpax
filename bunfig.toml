@@ -1,0 +1,10 @@
+# hotpax — bun test configuration
+
+[test]
+# Preload order is critical:
+#   1. happydom.ts  → registers all DOM globals via @happy-dom/global-registrator
+#                     BEFORE @testing-library/dom is imported by any test
+#   2. setup.ts     → adds jest-dom matchers + afterEach cleanup
+preload = ["./test/happydom.ts", "./test/setup.ts"]
+# Glob pattern for test files
+include = ["test/**/*.test.tsx", "test/**/*.test.ts"]

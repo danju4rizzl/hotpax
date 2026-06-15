@@ -1,0 +1,17 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { resolve } from "path";
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      // Point "hotpax" to the parent package's dist output
+      hotpax: resolve(__dirname, "../dist/index.mjs"),
+    },
+  },
+  server: {
+    port: 4000,
+    open: true,
+  },
+});

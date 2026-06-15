@@ -38,13 +38,67 @@ export interface LockGateProps {
    * Custom footer copyright text. Replaces the default "© YEAR" line.
    */
   footerText?: string;
+  /**
+   * UI theme mode.
+   * @default "light"
+   */
+  theme?: "light" | "dark";
 }
 
 // ─── Inline Styles ───────────────────────────────────────────────────────────
 // Using plain style objects so this component works in any project,
 // regardless of whether Tailwind CSS is installed.
 
-const styles: Record<string, CSSProperties> = {
+const themeStyles = {
+  light: {
+    rootBg: "#f7fafc",
+    rootColor: "#181c1e",
+    iconBoxBg: "#ffffff",
+    iconBoxBorder: "1px solid rgba(196,198,208,0.4)",
+    iconColor: "#181c1e",
+    clockBadgeBg: "#ffffff",
+    clockBadgeBorder: "1px solid rgba(196,198,208,0.4)",
+    clockBadgeColor: "#181c1e",
+    badgeBg: "#ffffff",
+    badgeBorder: "1px solid rgba(196,198,208,0.4)",
+    badgeColor: "#44474f",
+    headingColor: "#181c1e",
+    dividerBg: "rgba(196,198,208,0.5)",
+    descriptionColor: "#44474f",
+    siteNameColor: "#181c1e",
+    btnPrimaryBg: "#181c1e",
+    btnPrimaryColor: "#ffffff",
+    btnSecondaryBg: "#ffffff",
+    btnSecondaryColor: "#181c1e",
+    btnSecondaryBorder: "1px solid rgba(196,198,208,0.6)",
+    footerTextColor: "rgba(68,71,79,0.5)",
+  },
+  dark: {
+    rootBg: "#0d0f11",
+    rootColor: "#e2e8f0",
+    iconBoxBg: "#1a1f24",
+    iconBoxBorder: "1px solid rgba(255,255,255,0.1)",
+    iconColor: "#f8fafc",
+    clockBadgeBg: "#1a1f24",
+    clockBadgeBorder: "1px solid rgba(255,255,255,0.1)",
+    clockBadgeColor: "#f8fafc",
+    badgeBg: "#1a1f24",
+    badgeBorder: "1px solid rgba(255,255,255,0.1)",
+    badgeColor: "#94a3b8",
+    headingColor: "#f8fafc",
+    dividerBg: "rgba(255,255,255,0.1)",
+    descriptionColor: "#94a3b8",
+    siteNameColor: "#f8fafc",
+    btnPrimaryBg: "#ffffff",
+    btnPrimaryColor: "#0d0f11",
+    btnSecondaryBg: "#1a1f24",
+    btnSecondaryColor: "#e2e8f0",
+    btnSecondaryBorder: "1px solid rgba(255,255,255,0.15)",
+    footerTextColor: "rgba(148,163,184,0.4)",
+  },
+};
+
+const baseStyles: Record<string, CSSProperties> = {
   root: {
     minHeight: "100vh",
     width: "100%",
@@ -56,8 +110,6 @@ const styles: Record<string, CSSProperties> = {
     paddingBottom: "4rem",
     paddingLeft: "1.5rem",
     paddingRight: "1.5rem",
-    backgroundColor: "#f7fafc",
-    color: "#181c1e",
     userSelect: "none",
     fontFamily:
       "'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -90,19 +142,15 @@ const styles: Record<string, CSSProperties> = {
     justifyContent: "center",
     width: "5rem",
     height: "5rem",
-    backgroundColor: "#ffffff",
     borderRadius: "1rem",
-    border: "1px solid rgba(196,198,208,0.4)",
     boxShadow: "0 8px 30px rgba(0,0,0,0.03)",
   },
   clockBadge: {
     position: "absolute",
     bottom: "-4px",
     right: "-4px",
-    backgroundColor: "#ffffff",
     borderRadius: "9999px",
     padding: "4px",
-    border: "1px solid rgba(196,198,208,0.4)",
     boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
     display: "flex",
     alignItems: "center",
@@ -115,13 +163,10 @@ const styles: Record<string, CSSProperties> = {
     gap: "0.375rem",
     padding: "0.25rem 0.75rem",
     borderRadius: "9999px",
-    border: "1px solid rgba(196,198,208,0.4)",
-    backgroundColor: "#ffffff",
     fontSize: "0.625rem",
     fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace",
     fontWeight: 700,
     letterSpacing: "0.1em",
-    color: "#44474f",
     boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
   },
   pulseDot: {
@@ -135,7 +180,6 @@ const styles: Record<string, CSSProperties> = {
   heading: {
     fontSize: "2rem",
     fontWeight: 700,
-    color: "#181c1e",
     lineHeight: 1.2,
     letterSpacing: "-0.02em",
     margin: 0,
@@ -143,11 +187,9 @@ const styles: Record<string, CSSProperties> = {
   divider: {
     width: "3rem",
     height: "1px",
-    backgroundColor: "rgba(196,198,208,0.5)",
     margin: "1.5rem auto",
   },
   description: {
-    color: "#44474f",
     fontSize: "0.9375rem",
     fontWeight: 400,
     maxWidth: "22rem",
@@ -156,7 +198,6 @@ const styles: Record<string, CSSProperties> = {
     marginTop: 0,
   },
   siteName: {
-    color: "#181c1e",
     fontWeight: 700,
   },
   buttons: {
@@ -172,8 +213,6 @@ const styles: Record<string, CSSProperties> = {
     alignItems: "center",
     gap: "0.5rem",
     padding: "0.625rem 1.25rem",
-    backgroundColor: "#181c1e",
-    color: "#ffffff",
     fontWeight: 500,
     fontSize: "0.6875rem",
     borderRadius: "0.5rem",
@@ -191,13 +230,10 @@ const styles: Record<string, CSSProperties> = {
     alignItems: "center",
     gap: "0.5rem",
     padding: "0.625rem 1.25rem",
-    backgroundColor: "#ffffff",
-    color: "#181c1e",
     fontWeight: 500,
     fontSize: "0.6875rem",
     borderRadius: "0.5rem",
     textDecoration: "none",
-    border: "1px solid rgba(196,198,208,0.6)",
     fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace",
     letterSpacing: "0.08em",
     textTransform: "uppercase",
@@ -220,7 +256,6 @@ const styles: Record<string, CSSProperties> = {
     fontSize: "0.5625rem",
     fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace",
     letterSpacing: "0.1em",
-    color: "rgba(68,71,79,0.5)",
     textTransform: "uppercase",
     marginTop: "3rem",
   },
@@ -244,6 +279,7 @@ function injectKeyframes() {
     }
     .hotpax-btn-primary:hover  { opacity: 0.88 !important; }
     .hotpax-btn-secondary:hover { background-color: rgba(24,28,30,0.05) !important; }
+    .hotpax-btn-secondary-dark:hover { background-color: rgba(255,255,255,0.08) !important; }
   `;
   document.head.appendChild(el);
 }
@@ -259,6 +295,7 @@ export function LockGate({
   supportUrlLabel = "Visit Support",
   errorCode = "ACCESS_RESTRICTED",
   footerText,
+  theme = "light",
 }: LockGateProps) {
   // Pass-through: render children when access is granted
   if (hasPaid) {
@@ -271,54 +308,93 @@ export function LockGate({
   const currentYear = new Date().getFullYear();
   const defaultFooter = `© ${currentYear} ${siteName} • All rights reserved`;
 
+  const t = theme === "dark" ? themeStyles.dark : themeStyles.light;
+
   return (
-    <div style={styles.root}>
+    <div
+      style={{
+        ...baseStyles.root,
+        backgroundColor: t.rootBg,
+        color: t.rootColor,
+      }}
+    >
       {/* Top spacer */}
-      <div style={styles.spacer} />
+      <div style={baseStyles.spacer} />
 
       {/* Center Card */}
-      <div style={styles.card}>
+      <div style={baseStyles.card}>
         {/* Lock Icon + Badge */}
-        <div style={styles.iconWrap}>
-          <div style={styles.iconBox}>
-            <Lock style={{ width: "2rem", height: "2rem", color: "#181c1e" }} strokeWidth={1.8} />
-            <div style={styles.clockBadge}>
-              <Clock style={{ width: "0.875rem", height: "0.875rem", color: "#181c1e" }} strokeWidth={2} />
+        <div style={baseStyles.iconWrap}>
+          <div
+            style={{
+              ...baseStyles.iconBox,
+              backgroundColor: t.iconBoxBg,
+              border: t.iconBoxBorder,
+            }}
+          >
+            <Lock
+              style={{ width: "2rem", height: "2rem", color: t.iconColor }}
+              strokeWidth={1.8}
+            />
+            <div
+              style={{
+                ...baseStyles.clockBadge,
+                backgroundColor: t.clockBadgeBg,
+                border: t.clockBadgeBorder,
+              }}
+            >
+              <Clock
+                style={{ width: "0.875rem", height: "0.875rem", color: t.clockBadgeColor }}
+                strokeWidth={2}
+              />
             </div>
           </div>
 
-          <div style={styles.badge}>
-            <span style={styles.pulseDot} />
+          <div
+            style={{
+              ...baseStyles.badge,
+              backgroundColor: t.badgeBg,
+              border: t.badgeBorder,
+              color: t.badgeColor,
+            }}
+          >
+            <span style={baseStyles.pulseDot} />
             Access Blocked
           </div>
         </div>
 
         {/* Heading */}
-        <h1 style={styles.heading}>
+        <h1 style={{ ...baseStyles.heading, color: t.headingColor }}>
           This website is
           <br />
           Temporarily Offline
         </h1>
 
         {/* Divider */}
-        <div style={styles.divider} />
+        <div style={{ ...baseStyles.divider, backgroundColor: t.dividerBg }} />
 
         {/* Description */}
-        <p style={styles.description}>
+        <p style={{ ...baseStyles.description, color: t.descriptionColor }}>
           Access to the{" "}
-          <span style={styles.siteName}>{siteName} </span>
+          <span style={{ ...baseStyles.siteName, color: t.siteNameColor }}>
+            {siteName}{" "}
+          </span>
           is currently restricted. Please contact your administrator or developer
           for more information.
         </p>
 
         {/* CTA Buttons */}
         {(supportEmail || supportUrl) && (
-          <div style={styles.buttons}>
+          <div style={baseStyles.buttons}>
             {supportEmail && (
               <a
                 href={`mailto:${supportEmail}`}
                 className="hotpax-btn-primary"
-                style={styles.btnPrimary}
+                style={{
+                  ...baseStyles.btnPrimary,
+                  backgroundColor: t.btnPrimaryBg,
+                  color: t.btnPrimaryColor,
+                }}
               >
                 <Mail style={{ width: "1rem", height: "1rem" }} />
                 Contact Support
@@ -329,8 +405,17 @@ export function LockGate({
                 href={supportUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hotpax-btn-secondary"
-                style={styles.btnSecondary}
+                className={
+                  theme === "dark"
+                    ? "hotpax-btn-secondary-dark"
+                    : "hotpax-btn-secondary"
+                }
+                style={{
+                  ...baseStyles.btnSecondary,
+                  backgroundColor: t.btnSecondaryBg,
+                  color: t.btnSecondaryColor,
+                  border: t.btnSecondaryBorder,
+                }}
               >
                 <ExternalLink style={{ width: "0.875rem", height: "0.875rem" }} />
                 {supportUrlLabel}
@@ -341,8 +426,8 @@ export function LockGate({
       </div>
 
       {/* Bottom footer */}
-      <div style={styles.footer}>
-        <div style={styles.footerText}>
+      <div style={baseStyles.footer}>
+        <div style={{ ...baseStyles.footerText, color: t.footerTextColor }}>
           <div>ERROR_CODE: {errorCode}</div>
           <div>{footerText ?? defaultFooter}</div>
         </div>
