@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+
+# NOTE: dist/ is intentionally NOT ignored.
+# It must be committed so `bun add github:USER/hotpax` works
+# without needing a build step on the consumer side.
