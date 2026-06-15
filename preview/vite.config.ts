@@ -8,6 +8,11 @@ export default defineConfig({
     alias: {
       // Point "hotpax" to the parent package's dist output
       hotpax: resolve(__dirname, "../dist/index.mjs"),
+      // Force peer dependencies to resolve to the preview project's node_modules
+      // to prevent resolution failures in environments without root node_modules
+      "lucide-react": resolve(__dirname, "./node_modules/lucide-react"),
+      "react": resolve(__dirname, "./node_modules/react"),
+      "react-dom": resolve(__dirname, "./node_modules/react-dom"),
     },
   },
   server: {
