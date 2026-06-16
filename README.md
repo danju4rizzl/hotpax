@@ -22,13 +22,13 @@
 
 ```bash
 # bun
-bun add github:danju4rizzl/hotpax
+bun add https://github.com/danju4rizzl/hotpax
 
 # npm
-npm install github:danju4rizzl/hotpax
+npm install https://github.com/danju4rizzl/hotpax
 
 # yarn
-yarn add github:danju4rizzl/hotpax
+yarn add https://github.com/danju4rizzl/hotpax
 ```
 
 > **Important:** `lucide-react` and `react` are peer dependencies — your project must already have them installed.
@@ -288,69 +288,6 @@ bun run test
 Ran 74 tests across 4 files
 ```
 
----
-
-## 🚀 Hosting on GitHub (Step-by-Step Guide)
-
-This package is designed to be installed directly from GitHub — **no npm account required**.
-
-### Step 1 — Create a GitHub Repository
-
-1. Go to [github.com/new](https://github.com/new)
-2. Repository name: **`hotpax`**
-3. Set visibility to **Public** (required for `bun add github:...` to work without auth tokens)
-4. Do **not** initialize with a README (we already have one)
-5. Click **Create repository**
-
-### Step 2 — Build the Package Locally
-
-```bash
-cd path/to/web-dev/hotpax
-bun install      # install dev dependencies
-bun run build    # compiles → dist/index.js, dist/index.cjs, dist/index.d.ts
-bun run test     # run 74 tests — all must pass before committing
-```
-
-### Step 3 — Commit dist/ and Push to GitHub
-
-```bash
-git init
-git add .
-git commit -m "feat: initial hotpax package — LockGate, ComingSoon, MaintenanceScreen, PaywallBanner"
-git branch -M main
-git remote add origin https://github.com/danju4rizzl/hotpax.git
-git push -u origin main
-```
-
-> 💡 The `.gitignore` in this repo intentionally **does NOT ignore `dist/`**.
-> This is required so GitHub installs work — `bun add github:...` does not run
-> build scripts on install.
-
-### Step 4 — Install in Another Project
-
-```bash
-cd path/to/other-project
-bun add github:danju4rizzl/hotpax
-```
-
-This adds to your `package.json`:
-```json
-{
-  "dependencies": {
-    "hotpax": "github:danju4rizzl/hotpax"
-  }
-}
-```
-
-### Step 5 — Use It
-
-```tsx
-import { LockGate, ComingSoon, MaintenanceScreen, PaywallBanner } from "hotpax";
-```
-
-Done! 🎉
-
----
 
 ### Updating the Package
 
@@ -371,7 +308,7 @@ git push
 # 5. In consuming projects, update to latest
 bun update hotpax
 # or pin to a specific commit/tag:
-# bun add github:danju4rizzl/hotpax#v0.3.0
+# bun add https://github.com/danju4rizzl/hotpax#v0.3.0
 ```
 
 ### Using Git Tags for Versioned Releases
@@ -382,7 +319,7 @@ git tag v0.2.0
 git push origin v0.2.0
 
 # Install a specific version in another project
-bun add github:danju4rizzl/hotpax#v0.2.0
+bun add https://github.com/danju4rizzl/hotpax#v0.2.0
 ```
 
 ---
