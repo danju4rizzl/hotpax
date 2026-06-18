@@ -416,7 +416,6 @@ var themeStyles2 = {
     bg: "linear-gradient(135deg, #f5f3ff 0%, #fcfbfe 60%, #ffffff 100%)",
     color: "#2e2a47",
     headingColor: "#1e1b4b",
-    headingAccentBg: "linear-gradient(90deg, #4f46e5, #7c3aed)",
     gridColor: "rgba(99,102,241,0.03)",
     badgeBorder: "1px solid rgba(99,102,241,0.3)",
     badgeBg: "rgba(99,102,241,0.05)",
@@ -441,7 +440,6 @@ var themeStyles2 = {
     bg: "linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%)",
     color: "#e2e8f0",
     headingColor: "#f1f5f9",
-    headingAccentBg: "linear-gradient(90deg, #6366f1, #a78bfa)",
     gridColor: "rgba(99,102,241,0.06)",
     badgeBorder: "1px solid rgba(99,102,241,0.4)",
     badgeBg: "rgba(99,102,241,0.1)",
@@ -533,11 +531,6 @@ var baseStyles2 = {
     lineHeight: 1.1,
     letterSpacing: "-0.03em",
     margin: "0 0 1rem"
-  },
-  headingAccent: {
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text"
   },
   tagline: {
     fontSize: "1rem",
@@ -738,19 +731,7 @@ function ComingSoon({
             }
           ),
           /* @__PURE__ */ jsxs("h1", { style: { ...baseStyles2.heading, color: t.headingColor }, children: [
-            /* @__PURE__ */ jsx(
-              "span",
-              {
-                style: {
-                  ...baseStyles2.headingAccent,
-                  background: t.headingAccentBg,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text"
-                },
-                children: siteName
-              }
-            ),
+            /* @__PURE__ */ jsx("span", { children: siteName }),
             /* @__PURE__ */ jsx("br", {}),
             "is launching soon"
           ] }),

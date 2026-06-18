@@ -421,15 +421,7 @@ export function ComingSoon({
 
         {/* Heading */}
         <h1 style={{ ...baseStyles.heading, color: t.headingColor }}>
-          <span
-            style={{
-              ...baseStyles.headingAccent,
-              background: t.headingAccentBg,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
+          <span>
             {siteName}
           </span>
           <br />
@@ -442,8 +434,8 @@ export function ComingSoon({
         {launchDate && (
           <div style={baseStyles.countdown}>
             {[
-              { label: "Days",    val: countdown.days    },
-              { label: "Hours",   val: countdown.hours   },
+              { label: "Days", val: countdown.days },
+              { label: "Hours", val: countdown.hours },
               { label: "Minutes", val: countdown.minutes },
               { label: "Seconds", val: countdown.seconds },
             ].map(({ label, val }) => (
