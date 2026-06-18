@@ -11,6 +11,11 @@ export interface MaintenanceScreenProps {
    */
   siteName?: string;
   /**
+   * Optional URL or path to the brand logo image.
+   * If omitted, the default spinning Wrench icon is displayed.
+   */
+  logoSrc?: string;
+  /**
    * Short message shown below the heading.
    * @default "We're performing scheduled maintenance. We'll be back shortly."
    */
@@ -279,6 +284,7 @@ const baseStyles: Record<string, CSSProperties> = {
 
 export function MaintenanceScreen({
   siteName = "our service",
+  logoSrc,
   message = "We're performing scheduled maintenance. We'll be back shortly.",
   eta,
   statusItems,
@@ -303,24 +309,37 @@ export function MaintenanceScreen({
 
       <div style={baseStyles.card}>
         {/* Icon */}
-        <div
-          style={{
-            ...baseStyles.iconWrap,
-            backgroundColor: t.iconWrapBg,
-            border: t.iconWrapBorder,
-            boxShadow: t.iconWrapShadow,
-          }}
-        >
-          <Wrench
+        {logoSrc ? (
+          <img
+            src={logoSrc}
+            alt={`${siteName} Logo`}
             style={{
-              width: "2rem",
-              height: "2rem",
-              color: t.iconColor,
-              animation: "hotpax-spin 4s linear infinite",
+              height: "5rem",
+              width: "auto",
+              objectFit: "contain",
+              marginBottom: "2rem",
             }}
-            strokeWidth={1.8}
           />
-        </div>
+        ) : (
+          <div
+            style={{
+              ...baseStyles.iconWrap,
+              backgroundColor: t.iconWrapBg,
+              border: t.iconWrapBorder,
+              boxShadow: t.iconWrapShadow,
+            }}
+          >
+            <Wrench
+              style={{
+                width: "2rem",
+                height: "2rem",
+                color: t.iconColor,
+                animation: "hotpax-spin 4s linear infinite",
+              }}
+              strokeWidth={1.8}
+            />
+          </div>
+        )}
 
         {/* Badge */}
         <div

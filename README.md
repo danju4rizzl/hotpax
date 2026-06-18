@@ -57,6 +57,7 @@ import { LockGate } from "hotpax";
 <LockGate
   hasPaid={false}
   siteName="Acme SaaS Platform"
+  logoSrc="https://acme.com/logo.png"
   supportEmail="hello@acme.com"
   supportUrl="https://acme.com"
   supportUrlLabel="Visit Acme"
@@ -74,6 +75,7 @@ import { LockGate } from "hotpax";
 | `hasPaid`         | `boolean`   | **required**            | `true` = render children. `false` = show blocked screen. |
 | `children`        | `ReactNode` | **required**            | The protected content.                                   |
 | `siteName`        | `string`    | `"this website"`        | Product/site name shown in the blocked message.          |
+| `logoSrc`         | `string`    | `undefined`             | Optional URL/path to brand logo. If omitted, default Lock icon is shown. |
 | `supportEmail`    | `string`    | `undefined`             | Renders a "Contact Support" button when provided.        |
 | `supportUrl`      | `string`    | `undefined`             | Renders a secondary CTA button when provided.            |
 | `supportUrlLabel` | `string`    | `"Visit Support"`       | Label for the `supportUrl` button.                       |
@@ -97,6 +99,7 @@ import { ComingSoon } from "hotpax";
 <ComingSoon
   siteName="Project Nova"
   tagline="The next generation of creative tooling. Sign up to get early access."
+  logoSrc="https://projectnova.com/logo.png"
   launchDate="2026-12-01T00:00:00Z"
   onNotify={(email) => console.log("Subscribed:", email)}
   notifyLabel="Get Early Access"
@@ -114,6 +117,7 @@ import { ComingSoon } from "hotpax";
 | -------------- | -------------------------------------- | ----------------------------------------- | -------------------------------------------------------------- |
 | `siteName`     | `string`                               | `"Something Awesome"`                     | Product/site name in the heading.                              |
 | `tagline`      | `string`                               | `"We're building something great…"`       | Short sub-heading below the site name.                         |
+| `logoSrc`      | `string`                               | `undefined`                               | Optional URL/path to brand logo. If omitted, default Rocket icon is shown. |
 | `launchDate`   | `string \| Date`                       | `undefined`                               | ISO date string or `Date` — renders a live countdown when set. |
 | `onNotify`     | `(email: string) => void`              | `undefined`                               | Called with the trimmed email on form submit. Shows the form when provided. |
 | `notifyLabel`  | `string`                               | `"Notify Me"`                             | Label for the notify/submit button.                            |
@@ -136,6 +140,7 @@ import { MaintenanceScreen } from "hotpax";
 // Fully configured
 <MaintenanceScreen
   siteName="Acme Platform"
+  logoSrc="https://acme.com/logo.png"
   message="Our team is deploying a major update to improve performance and reliability."
   eta="in ~45 minutes"
   statusItems={[
@@ -155,6 +160,7 @@ import { MaintenanceScreen } from "hotpax";
 | Prop            | Type                                                           | Default                                               | Description                                                  |
 | --------------- | -------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
 | `siteName`      | `string`                                                       | `"our service"`                                       | Site/product name shown in the description.                  |
+| `logoSrc`       | `string`                                                       | `undefined`                                           | Optional URL/path to brand logo. If omitted, default Wrench icon is shown. |
 | `message`       | `string`                                                       | `"We're performing scheduled maintenance…"`           | Body text below the heading.                                 |
 | `eta`           | `string`                                                       | `undefined`                                           | Estimated back time — shown in a green chip when provided.   |
 | `statusItems`   | `Array<{ label: string; status: "operational" \| "degraded" \| "down" }>` | `undefined`              | Per-service status rows rendered below the message.          |

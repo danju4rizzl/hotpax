@@ -137,6 +137,23 @@ describe("LockGate — prop customisation", () => {
     );
     expect(screen.getByText("My Custom Footer")).toBeInTheDocument();
   });
+
+  test("renders brand logo image when logoSrc is provided", () => {
+    render(
+      <LockGate hasPaid={false} logoSrc="https://example.com/logo.png" siteName="Project Nova">
+        <span />
+      </LockGate>
+    );
+    const logo = screen.getByRole("img", { name: /Project Nova Logo/i });
+    expect(logo).toBeInTheDocument();
+    expect(logo).toHaveAttribute("src", "https://example.com/logo.png");
+  });
+
+  test("does NOT render image when logoSrc is omitted", () => {
+    render(<LockGate hasPaid={false}><span /></LockGate>);
+    const images = screen.queryAllByRole("img");
+    expect(images.length).toBe(0);
+  });
 });
 
 // ─── 4. Default values ───────────────────────────────────────────────────────

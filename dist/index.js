@@ -239,6 +239,7 @@ function LockGate({
   hasPaid,
   children,
   siteName = "this website",
+  logoSrc,
   supportEmail,
   supportUrl,
   supportUrlLabel = "Visit Support",
@@ -265,7 +266,18 @@ function LockGate({
         /* @__PURE__ */ jsxRuntime.jsx("div", { style: baseStyles.spacer }),
         /* @__PURE__ */ jsxRuntime.jsxs("div", { style: baseStyles.card, children: [
           /* @__PURE__ */ jsxRuntime.jsxs("div", { style: baseStyles.iconWrap, children: [
-            /* @__PURE__ */ jsxRuntime.jsxs(
+            logoSrc ? /* @__PURE__ */ jsxRuntime.jsx(
+              "img",
+              {
+                src: logoSrc,
+                alt: `${siteName} Logo`,
+                style: {
+                  height: "5rem",
+                  width: "auto",
+                  objectFit: "contain"
+                }
+              }
+            ) : /* @__PURE__ */ jsxRuntime.jsxs(
               "div",
               {
                 style: {
@@ -664,6 +676,7 @@ function useCountdown(target) {
 function ComingSoon({
   siteName = "Something Awesome",
   tagline = "We're building something great. Stay tuned.",
+  logoSrc,
   launchDate,
   onNotify,
   notifyLabel = "Notify Me",
@@ -704,7 +717,19 @@ function ComingSoon({
         ),
         /* @__PURE__ */ jsxRuntime.jsx("div", { style: baseStyles2.spacer }),
         /* @__PURE__ */ jsxRuntime.jsxs("div", { style: baseStyles2.card, children: [
-          /* @__PURE__ */ jsxRuntime.jsx("div", { style: baseStyles2.iconGlow, children: /* @__PURE__ */ jsxRuntime.jsx("div", { style: baseStyles2.iconBg, children: /* @__PURE__ */ jsxRuntime.jsx(lucideReact.Rocket, { style: { width: "2rem", height: "2rem", color: "#ffffff" }, strokeWidth: 1.8 }) }) }),
+          /* @__PURE__ */ jsxRuntime.jsx("div", { style: baseStyles2.iconGlow, children: logoSrc ? /* @__PURE__ */ jsxRuntime.jsx(
+            "img",
+            {
+              src: logoSrc,
+              alt: `${siteName} Logo`,
+              style: {
+                height: "5rem",
+                width: "auto",
+                objectFit: "contain",
+                animation: "hotpax-float 3s ease-in-out infinite"
+              }
+            }
+          ) : /* @__PURE__ */ jsxRuntime.jsx("div", { style: baseStyles2.iconBg, children: /* @__PURE__ */ jsxRuntime.jsx(lucideReact.Rocket, { style: { width: "2rem", height: "2rem", color: "#ffffff" }, strokeWidth: 1.8 }) }) }),
           /* @__PURE__ */ jsxRuntime.jsxs(
             "div",
             {
@@ -1058,6 +1083,7 @@ var baseStyles3 = {
 };
 function MaintenanceScreen({
   siteName = "our service",
+  logoSrc,
   message = "We're performing scheduled maintenance. We'll be back shortly.",
   eta,
   statusItems,
@@ -1080,7 +1106,19 @@ function MaintenanceScreen({
       children: [
         /* @__PURE__ */ jsxRuntime.jsx("div", { style: baseStyles3.spacer }),
         /* @__PURE__ */ jsxRuntime.jsxs("div", { style: baseStyles3.card, children: [
-          /* @__PURE__ */ jsxRuntime.jsx(
+          logoSrc ? /* @__PURE__ */ jsxRuntime.jsx(
+            "img",
+            {
+              src: logoSrc,
+              alt: `${siteName} Logo`,
+              style: {
+                height: "5rem",
+                width: "auto",
+                objectFit: "contain",
+                marginBottom: "2rem"
+              }
+            }
+          ) : /* @__PURE__ */ jsxRuntime.jsx(
             "div",
             {
               style: {

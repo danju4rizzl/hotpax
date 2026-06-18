@@ -15,6 +15,11 @@ export interface ComingSoonProps {
    */
   tagline?: string;
   /**
+   * Optional URL or path to the brand logo image.
+   * If omitted, the default floating Rocket icon is displayed.
+   */
+  logoSrc?: string;
+  /**
    * ISO date string or Date for a launch countdown timer.
    * When provided, a live countdown is rendered.
    */
@@ -350,6 +355,7 @@ function useCountdown(target?: string | Date) {
 export function ComingSoon({
   siteName = "Something Awesome",
   tagline = "We're building something great. Stay tuned.",
+  logoSrc,
   launchDate,
   onNotify,
   notifyLabel = "Notify Me",
@@ -390,11 +396,24 @@ export function ComingSoon({
       <div style={baseStyles.spacer} />
 
       <div style={baseStyles.card}>
-        {/* Floating Icon */}
+        {/* Brand Logo or Floating Icon */}
         <div style={baseStyles.iconGlow}>
-          <div style={baseStyles.iconBg}>
-            <Rocket style={{ width: "2rem", height: "2rem", color: "#ffffff" }} strokeWidth={1.8} />
-          </div>
+          {logoSrc ? (
+            <img
+              src={logoSrc}
+              alt={`${siteName} Logo`}
+              style={{
+                height: "5rem",
+                width: "auto",
+                objectFit: "contain",
+                animation: "hotpax-float 3s ease-in-out infinite",
+              }}
+            />
+          ) : (
+            <div style={baseStyles.iconBg}>
+              <Rocket style={{ width: "2rem", height: "2rem", color: "#ffffff" }} strokeWidth={1.8} />
+            </div>
+          )}
         </div>
 
         {/* Badge */}

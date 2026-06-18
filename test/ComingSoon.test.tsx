@@ -69,6 +69,19 @@ describe("ComingSoon — prop customisation", () => {
     render(<ComingSoon onNotify={() => {}} notifyLabel="Join Waitlist" />);
     expect(screen.getByRole("button", { name: /Join Waitlist/i })).toBeInTheDocument();
   });
+
+  test("renders brand logo image when logoSrc is provided", () => {
+    render(<ComingSoon logoSrc="https://example.com/logo.png" siteName="Project Nova" />);
+    const logo = screen.getByRole("img", { name: /Project Nova Logo/i });
+    expect(logo).toBeInTheDocument();
+    expect(logo).toHaveAttribute("src", "https://example.com/logo.png");
+  });
+
+  test("does NOT render image when logoSrc is omitted", () => {
+    render(<ComingSoon />);
+    const images = screen.queryAllByRole("img");
+    expect(images.length).toBe(0);
+  });
 });
 
 // ─── 3. Countdown timer ───────────────────────────────────────────────────────

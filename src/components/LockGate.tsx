@@ -17,6 +17,11 @@ export interface LockGateProps {
    */
   siteName?: string;
   /**
+   * Optional URL or path to the brand logo image.
+   * If omitted, the default floating Lock icon is displayed.
+   */
+  logoSrc?: string;
+  /**
    * Support email address. When provided, renders a "Contact Support" button.
    */
   supportEmail?: string;
@@ -290,6 +295,7 @@ export function LockGate({
   hasPaid,
   children,
   siteName = "this website",
+  logoSrc,
   supportEmail,
   supportUrl,
   supportUrlLabel = "Visit Support",
@@ -325,30 +331,42 @@ export function LockGate({
       <div style={baseStyles.card}>
         {/* Lock Icon + Badge */}
         <div style={baseStyles.iconWrap}>
-          <div
-            style={{
-              ...baseStyles.iconBox,
-              backgroundColor: t.iconBoxBg,
-              border: t.iconBoxBorder,
-            }}
-          >
-            <Lock
-              style={{ width: "2rem", height: "2rem", color: t.iconColor }}
-              strokeWidth={1.8}
+          {logoSrc ? (
+            <img
+              src={logoSrc}
+              alt={`${siteName} Logo`}
+              style={{
+                height: "5rem",
+                width: "auto",
+                objectFit: "contain",
+              }}
             />
+          ) : (
             <div
               style={{
-                ...baseStyles.clockBadge,
-                backgroundColor: t.clockBadgeBg,
-                border: t.clockBadgeBorder,
+                ...baseStyles.iconBox,
+                backgroundColor: t.iconBoxBg,
+                border: t.iconBoxBorder,
               }}
             >
-              <Clock
-                style={{ width: "0.875rem", height: "0.875rem", color: t.clockBadgeColor }}
-                strokeWidth={2}
+              <Lock
+                style={{ width: "2rem", height: "2rem", color: t.iconColor }}
+                strokeWidth={1.8}
               />
+              <div
+                style={{
+                  ...baseStyles.clockBadge,
+                  backgroundColor: t.clockBadgeBg,
+                  border: t.clockBadgeBorder,
+                }}
+              >
+                <Clock
+                  style={{ width: "0.875rem", height: "0.875rem", color: t.clockBadgeColor }}
+                  strokeWidth={2}
+                />
+              </div>
             </div>
-          </div>
+          )}
 
           <div
             style={{

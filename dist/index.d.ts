@@ -15,6 +15,11 @@ interface LockGateProps {
      */
     siteName?: string;
     /**
+     * Optional URL or path to the brand logo image.
+     * If omitted, the default floating Lock icon is displayed.
+     */
+    logoSrc?: string;
+    /**
      * Support email address. When provided, renders a "Contact Support" button.
      */
     supportEmail?: string;
@@ -42,7 +47,7 @@ interface LockGateProps {
      */
     theme?: "light" | "dark";
 }
-declare function LockGate({ hasPaid, children, siteName, supportEmail, supportUrl, supportUrlLabel, errorCode, footerText, theme, }: LockGateProps): react.JSX.Element;
+declare function LockGate({ hasPaid, children, siteName, logoSrc, supportEmail, supportUrl, supportUrlLabel, errorCode, footerText, theme, }: LockGateProps): react.JSX.Element;
 
 interface ComingSoonProps {
     /**
@@ -55,6 +60,11 @@ interface ComingSoonProps {
      * @default "We're building something great. Stay tuned."
      */
     tagline?: string;
+    /**
+     * Optional URL or path to the brand logo image.
+     * If omitted, the default floating Rocket icon is displayed.
+     */
+    logoSrc?: string;
     /**
      * ISO date string or Date for a launch countdown timer.
      * When provided, a live countdown is rendered.
@@ -87,7 +97,7 @@ interface ComingSoonProps {
      */
     theme?: "light" | "dark";
 }
-declare function ComingSoon({ siteName, tagline, launchDate, onNotify, notifyLabel, links, footerText, theme, }: ComingSoonProps): react.JSX.Element;
+declare function ComingSoon({ siteName, tagline, logoSrc, launchDate, onNotify, notifyLabel, links, footerText, theme, }: ComingSoonProps): react.JSX.Element;
 
 interface MaintenanceScreenProps {
     /**
@@ -95,6 +105,11 @@ interface MaintenanceScreenProps {
      * @default "our service"
      */
     siteName?: string;
+    /**
+     * Optional URL or path to the brand logo image.
+     * If omitted, the default spinning Wrench icon is displayed.
+     */
+    logoSrc?: string;
     /**
      * Short message shown below the heading.
      * @default "We're performing scheduled maintenance. We'll be back shortly."
@@ -130,7 +145,7 @@ interface MaintenanceScreenProps {
      */
     theme?: "light" | "dark";
 }
-declare function MaintenanceScreen({ siteName, message, eta, statusItems, supportEmail, statusPageUrl, footerText, theme, }: MaintenanceScreenProps): react.JSX.Element;
+declare function MaintenanceScreen({ siteName, logoSrc, message, eta, statusItems, supportEmail, statusPageUrl, footerText, theme, }: MaintenanceScreenProps): react.JSX.Element;
 
 /** A single feature row in the plan comparison list. */
 interface PaywallFeature {
